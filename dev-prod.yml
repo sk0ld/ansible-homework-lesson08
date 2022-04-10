@@ -26,3 +26,14 @@
   - name: Maven package create
     command: mvn -f /usr/share/app-src/pom.xml package -DskipTest
 
+
+- name: install tomcat
+  hosts: prod
+  become: yes
+
+  tasks:
+  - name: Ensure tomcat9 package is present
+    apt:
+     name: tomcat9
+     state: present
+     update_cache: yes 
