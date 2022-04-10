@@ -11,3 +11,7 @@ ip_or_hostname_prod
 To run playbook:
 
 ansible-playbook dev-prod.yml
+
+To check the result:
+
+http://ip_or_hostname_prod:8080/hello-1.0
