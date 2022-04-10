@@ -1,0 +1,10 @@
+---
+- name: install git
+  hosts: dev
+  become: yes
+
+  tasks:
+  - name: Ensure git package is present
+    apt:
+     name: git
+     state: present
