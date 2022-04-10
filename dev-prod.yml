@@ -47,4 +47,4 @@
       synchronize:
         src: /usr/share/app-src/target/*.war
         dest: /usr/share/tomcat9/webapps
-      delegate_to: dev
+        delegate_to: dev
