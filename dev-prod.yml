@@ -49,12 +49,12 @@
        dest: /tmp/
        flat: yes
 
-- name: Copy war file from master to prod
+- name: Transfer war file from master to prod
   hosts: prod
   become: yes
 
   tasks:
-    - name: Transfer war from master to prod
+    - name: Copy war from master to prod
       copy:
        src: /tmp/hello-1.0.war
        dest: /var/lib/tomcat9/webapps
