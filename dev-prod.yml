@@ -3,19 +3,19 @@
   hosts: dev
   become: yes
 
+
   tasks:
-   - name: Ensure git package is present
-      apt:
-       name: git
-       state: present
-       update_cache: yes
+  - name: Ensure git package is present
+    apt:
+     name: git
+     state: present
+     update_cache: yes
 
-   - name: Ensure maven package is present
-      apt:
-       name: maven
-       state: present
-       update_cache: yes
-
+  - name: Ensure maven package is present
+    apt:
+     name: maven
+     state: present
+     update_cache: yes       
 
    - name: Clone a github repository
        git:
