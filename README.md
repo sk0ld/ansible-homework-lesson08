@@ -2,11 +2,19 @@ It's a very simple example of ansible usage without special tests.
 
 Place dev and prod servers in /etc/ansible/hosts
 
+<<<<<<< HEAD
 #[dev]
 #ip_or_hostname_dev
 
 #[prod]
 #ip_or_hostname_prod
+=======
+[dev]
+ip_or_hostname_dev
+
+[prod]
+ip_or_hostname_prod
+>>>>>>> 23f30db1534e009953104a818de1de3548e25f3c
 
 To run playbook:
 
