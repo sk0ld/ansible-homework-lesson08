@@ -23,5 +23,6 @@
      clone: yes
      update: yes
 
-#  - name: Maven package create
+  - name: Maven package create
+    command: mvn -f /usr/share/app-src/pom.xml package -DskipTest
 
