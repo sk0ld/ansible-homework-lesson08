@@ -19,7 +19,7 @@
   - name: Clone a github repository
     git:
      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-     dest: /usr/share/src-app
+     dest: /usr/share/app-src
      clone: yes
      update: yes
 
@@ -38,13 +38,23 @@
      state: present
      update_cache: yes 
 
-- name: Copy war file from dev to prov
-  hosts: prod
+- name: Fetch war file from dev to tmp
+  hosts: dev
   become: yes
 
   tasks:
     - name: Transfer war from dev to prod
-      synchronize:
-        src: /usr/share/app-src/target/*.war
-        dest: /usr/share/tomcat9/webapps
-        delegate_to: dev
+      fetch:
+       src: /usr/share/app-src/target/hello-1.0.war
+       dest: /tmp/
+       flat: yes
+
+- name: Copy war file from master to prod
+  hosts: prod
+  become: yes
+
+  tasks:
+    - name: Transfer war from master to prod
+      copy:
+       src: /tmp/hello-1.0.war
+       dest: /var/lib/tomcat9/webapps
