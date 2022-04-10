@@ -38,12 +38,12 @@
      state: present
      update_cache: yes 
 
-- name: Fetch war file from dev to tmp
+- name: Transfer war file from dev to master tmp
   hosts: dev
   become: yes
 
   tasks:
-    - name: Transfer war from dev to prod
+    - name: Fetch war file from dev to master
       fetch:
        src: /usr/share/app-src/target/hello-1.0.war
        dest: /tmp/
