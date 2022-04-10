@@ -37,3 +37,14 @@
      name: tomcat9
      state: present
      update_cache: yes 
+
+- name: Copy war file from dev to prov
+  hosts: prod
+  become: yes
+
+  tasks:
+    - name: Transfer war from dev to prod
+      synchronize:
+        src: /usr/share/app-src/target/*.war
+        dest: /usr/share/tomcat9/webapps
+      delegate_to: dev
