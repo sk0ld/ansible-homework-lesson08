@@ -1,25 +1,29 @@
 ---
- - name: install git & maven
-   hosts: dev
-   become: yes
+- name: install git & maven
+  hosts: dev
+  become: yes
+  vars: 
+  - src-path: /usr/share/app-src
 
-   tasks:
-   - name: Ensure git package is present
-     apt:
-      name: git
-      state: present
-      update_cache: yes
+  tasks:
+  - name: Ensure git package is present
+    apt:
+     name: git
+     state: present
+     update_cache: yes
 
-   - name: Ensure maven package is present
-     apt:
-      name: maven
-      state: present
-      update_cache: yes       
+  - name: Ensure maven package is present
+    apt:
+     name: maven
+     state: present
+     update_cache: yes       
 
-   - name: Clone a github repository
+  - name: Clone a github repository
      git:
       repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-      dest: /usr/share/app-src
+      dest: {{ src-path }}
       clone: yes
       update: yes
+
+#  - name: Maven package create
 
